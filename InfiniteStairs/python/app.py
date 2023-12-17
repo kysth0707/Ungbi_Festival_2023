@@ -27,6 +27,9 @@ nameNumX, nameNumY, nameNumZ = 0, 0, 0
 
 rankOfInfiniteStairs = []
 
+latestName = "없음"
+latestScore = 0
+
 def getName() -> str:
 	global nameNumX, nameNumY, nameNumZ
 	nameNumZ += 1
@@ -44,17 +47,27 @@ def a():
 
 @app.get('/add/infinitestairs/{score}')
 def addDataToInfiniteStairs(score : int):
-	global rankOfInfiniteStairs
+	global rankOfInfiniteStairs, latestName, latestScore
 
 	name = getName()
 	rankOfInfiniteStairs.append([
 		name, score
 	])
 	rankOfInfiniteStairs.sort()
+	latestName = name
+	latestScore = score
 
 	return {
 		"name" : name
 	}
+
+@app.get('/latestName/')
+def getLatestData():
+	return latestName
+	
+@app.get('/latestScore/')
+def getLatestData():
+	return latestScore
 
 @app.get('/get/infinitestairs')
 def getScores():
@@ -64,4 +77,4 @@ def getScores():
 
 
 if __name__ == "__main__":
-	uvicorn.run("app:app", host="0.0.0.0", port=999, reload=True)
+	uvicorn.run("app:app", host="0.0.0.0", port=9999, reload=True)
