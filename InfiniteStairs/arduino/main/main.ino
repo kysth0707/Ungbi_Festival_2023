@@ -60,9 +60,9 @@ void setup()
 
 void loop()
 {
-    int isLeftPressed = !digitalRead(LEFT_FOOT_PIN);;
+    int isLeftPressed = digitalRead(LEFT_FOOT_PIN);;
     delay(10);
-    int isRightPressed = !digitalRead(RIGHT_FOOT_PIN);
+    int isRightPressed = digitalRead(RIGHT_FOOT_PIN);
     int isButtonPressed = !digitalRead(TOP_DOUBLE_BUTTON_PIN);
 //    버튼 누르면 진동으로 사용자에게 피드백
     digitalWrite(VIBRATION, isButtonPressed);

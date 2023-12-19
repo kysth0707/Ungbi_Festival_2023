@@ -68,5 +68,9 @@ public class ScoreManager : MonoBehaviour
             child.GetChild(0).GetComponent<TMP_Text>().text = (i + 1).ToString() + ". " + Scores[i].ToString();
             child.GetChild(1).GetComponent<TMP_Text>().text = (i + 1).ToString() + ". " + Scores[i].ToString();
         }
+        if(Scores.Count >= 7)
+        {
+            Scores.RemoveAt(7);
+        }
     }
 }

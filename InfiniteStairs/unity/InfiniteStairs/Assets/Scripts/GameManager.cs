@@ -133,12 +133,19 @@ public class GameManager : MonoBehaviour
     public void AddStair(bool turn = true)
     {
         LastStairY += 1;
-        
-        if(turn && Random.Range(0, 100) < 25)
+
+        int turnPercent = 10 + (PlayerScore / 20);
+        if (turnPercent > 30) turnPercent = 30;
+
+        int coinPercent = 30 + (PlayerScore / 20);
+        if (coinPercent > 50) coinPercent = 50;
+
+        if (turn && Random.Range(0, 100) < turnPercent)
         {
             isStairLeft = !isStairLeft;
         }
-        if(Random.Range(0, 100) < 30)
+
+        if(Random.Range(0, 100) < coinPercent)
         {
             IsCoin.Add(true);
         }
